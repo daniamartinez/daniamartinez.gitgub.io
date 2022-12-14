@@ -1,60 +1,64 @@
 <html>
     <head>
-            <style>
-            ul {
-              list-style-type: none;
-              margin: 0;
-              padding: 0;
-              overflow: hidden;
-              background-color: #333;
-            }
-            
-            li {
-              float: left;
-            }
-            
-            li a {
-              display: block;
-              color: white;
-              text-align: center;
-              padding: 14px 16px;
-              text-decoration: none;
-            }
-            
-            li a:hover {
-              background-color: #111;
-            }
-            </style>
-            
-            <ul>
-              <li><a class="active" href="index.html">home</a></li>
-              <li><a href="jazz.html">jazz</a></li>
-              <li><a href="pop.html">pop</a></li>
-              <li><a href="songs.html">songs</a></li>
-            </ul>
-            
-            
+    <title> Music Around The World | Welcome </title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="./css/style.css">
     </head>
-
     <body>
-        <h1>Different Types of Music Genres</h1>
-        <ul>
-            <li style=color:red> Jazz </li>
-            <li style=color:orange> pop </li>
-            <li style=color:rgb(153, 153, 81)>country</li>
-            <li style=color:green >rap</li>
-        </ul>
-        <li>What makes up Music:</li>
-        <ol>
-            <li>Genre</li>
-            <li>sound</li>
-            <li>rythym</li>
-        </ol>
-        <li> This is an example of a type of jazz music</li>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/rzplMvVs5dw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    
+        <header>
+            <div class="container">
+                <div id="branding">
+                    <h1><span class="highlight">Music Around</span> The World</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li class="current"><a href="index.html">Home</a></li>
+                        <li><a href="genres.html">Genres</a></li>
+                        <li><a href="songs.html">Songs</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <section id="showcase">
+            <div class="container">
+
+                <h1> Different Music Played Around The World </h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In diam enim, molestie vel lectus varius, ullamcorper euismod felis</p>
+            </div>
+        </section>
+        
+        <section id="newsletter">
+            <div class="container">
+                <h1>Subscribe To Our Newsletter</h1>
+                <form>
+                    <input type="email" placeholder="Enter Email...">
+                    <button type="submit" class="button_1">Subscribe</button>
+                </form>
+            </div>
+        </section>
+        <section id="boxes">
+            <div class="container">
+                <div class="box">
+                    <img src="rhythm.png">
+                    <h3>Rhythm</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In diam enim, molestie vel lectus varius, ullamcorper euismod felis</p>
+                </div>
+                <div class="box">
+                    <img src="disk.png">
+                    <h3>Culture</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In diam enim, molestie vel lectus varius, ullamcorper euismod felis</p>
+                </div>
+                <div class="box">
+                    <img src="keysignature.png">
+                    <h3>Key Signature</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In diam enim, molestie vel lectus varius, ullamcorper euismod felis</p>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>Music Around the World, Copyright &copy; 2022</p>
+        </footer>
     </body>
-
 </html>
-
-
