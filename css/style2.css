@@ -36,11 +36,11 @@ ul{
 
     /*Header**/
     header{
-        background:#264653;
-        color:#e9c46a;
+        background:#fd7bc7;
+        color:#cedbae;
         padding-top:30px;
         min-height:70px;
-        border-bottom:#2a9d8f 3px solid;
+        border-bottom:#798b89 3px solid;
     }
     
     header a{
