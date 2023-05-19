@@ -20,117 +20,130 @@
             </div>
         </header>
         
-       <section id="newsletter">
+        <section id="boxes">
             <div class="container">
-                <h1>Using ChatGPT to help me create Tic-Tac-Toe</h1>
-               
-                
-                
-                
-                
-                
-                <html>
-                    <head>
-                        <title>Tic-Tac-Toe Game</title>
-                        <style>
-                            .board {
-                                display: flex;
-                                flex-wrap: wrap;
-                                width: 300px;
-                                margin: 0 auto;
-                            }
-                            .cell {
-                                width: 100px;
-                                height: 100px;
-                                border: 1px solid #ccc;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                font-size: 32px;
-                                cursor: pointer;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <div class="board"></div>
+                <div class="box">
+                    <li>Page One of subsite using ChatGPT!</li>
+                </div>
+                <div class="box">
                     
-                        <script>
-                            // Game logic
-                            const board = ['', '', '', '', '', '', '', '', ''];
-                            let currentPlayer = 'X';
-                    
-                            const boardContainer = document.querySelector('.board');
-                            boardContainer.addEventListener('click', handleCellClick);
-                    
-                            // Create the game board
-                            function createGameBoard() {
-                                boardContainer.innerHTML = '';
-                                for (let i = 0; i < 9; i++) {
+                    <html>
+                        <head>
+                            <title>Tic Tac Toe</title>
+                            <style>
+                                .board {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    width: 240px;
+                                }
+                                .cell {
+                                    box-sizing: border-box;
+                                    width: 80px;
+                                    height: 80px;
+                                    border: 1px solid #000;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    font-size: 48px;
+                                    cursor: pointer;
+                                }
+                            </style>
+                        </head>
+                        <body>
+                            <div class="board"></div>
+                        
+                            <script>
+                                // Set up the game board
+                                const board = document.querySelector('.board');
+                                const cells = Array.from({ length: 9 });
+                        
+                                cells.forEach((_, index) => {
                                     const cell = document.createElement('div');
                                     cell.classList.add('cell');
-                                    cell.dataset.index = i;
-                                    cell.textContent = board[i];
-                                    boardContainer.appendChild(cell);
-                                }
-                            }
-                    
-                            // Handle cell click event
-                            function handleCellClick(event) {
-                                const cellIndex = event.target.dataset.index;
-                                if (board[cellIndex] === '') {
-                                    board[cellIndex] = currentPlayer;
-                                    event.target.textContent = currentPlayer;
-                    
-                                    if (checkWin()) {
-                                        alert(`Player ${currentPlayer} wins!`);
-                                        resetGame();
-                                    } else if (board.every(cell => cell !== '')) {
-                                        alert("It's a draw!");
-                                        resetGame();
-                                    } else {
-                                        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                                    }
-                                }
-                            }
-                    
-                            // Check if a player has won
-                            function checkWin() {
-                                const winningCombinations = [
+                                    cell.dataset.index = index;
+                                    board.appendChild(cell);
+                                });
+                        
+                                // Game state
+                                let currentPlayer = 'X';
+                                let gameEnded = false;
+                                let winningCombos = [
                                     [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
                                     [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
                                     [0, 4, 8], [2, 4, 6] // Diagonals
                                 ];
-                    
-                                for (const combination of winningCombinations) {
-                                    const [a, b, c] = combination;
-                                    if (board[a] !== '' && board[a] === board[b] && board[a] === board[c]) {
-                                        return true;
+                        
+                                // Handle cell click event
+                                board.addEventListener('click', handleCellClick);
+                        
+                                function handleCellClick(event) {
+                                    const cell = event.target;
+                                    const index = parseInt(cell.dataset.index);
+                        
+                                    if (cells[index] || gameEnded) {
+                                        return;
                                     }
+                        
+                                    cells[index] = currentPlayer;
+                                    cell.textContent = currentPlayer;
+                                    cell.style.color = currentPlayer === 'X' ? 'blue' : 'red';
+                        
+                                    if (checkWin(currentPlayer)) {
+                                        gameEnded = true;
+                                        setTimeout(() => {
+                                            alert(`Player ${currentPlayer} wins!`);
+                                            resetGame();
+                                        }, 100);
+                                        return;
+                                    }
+                        
+                                    if (checkDraw()) {
+                                        gameEnded = true;
+                                        setTimeout(() => {
+                                            alert("It's a draw!");
+                                            resetGame();
+                                        }, 100);
+                                        return;
+                                    }
+                        
+                                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
                                 }
+                        
+                                // Check if the current player wins
+                                function checkWin(player) {
+                                    return winningCombos.some(combination => {
+                                        return combination.every(index => cells[index] === player);
+                                    });
+                                }
+                        
+                                // Check if the game is a draw
+                                function checkDraw() {
+                                    return cells.every(cell => cell !== undefined);
+                                }
+                        
+                                // Reset the game
+                                function resetGame() {
+                                    cells.fill(undefined);
+                                    currentPlayer = 'X';
+                                    gameEnded = false;
+                                    board.innerHTML = '';
+                                    cells.forEach((_, index) => {
+                                        const cell = document.createElement('div');
+                                        cell.classList.add('cell');
+                                        cell.dataset.index = index;
+                                        board.appendChild(cell);
+                                    });
+                                }
+                            </script>
+                        </body>
+                        </html>
                     
-                                return false;
-                            }
-                    
-                            // Reset the game
-                            function resetGame() {
-                                board.fill('');
-                                currentPlayer = 'X';
-                                createGameBoard();
-                            }
-                    
-                            // Initialize the game board
-                            createGameBoard();
-                        </script>
-                    </body>
-                    </html>
-                
-                
-                
-                
-                
-                
+                </div>
+                <div class="box">
+                    <li>ChatGPT created a game of Tic-Tac-Toe in seconds</li>
+                </div>
             </div>
-        </section> 
+        </section>
         <footer>
             <p>Music Around the World, Copyright &copy; 2022</p>
         </footer>
