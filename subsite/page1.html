@@ -29,75 +29,100 @@
                 
                 
                 
-                 const gameContainer = document.getElementById('game-container');
-            const board = ['', '', '', '', '', '', '', '', ''];
-            let currentPlayer = 'X';
-            
-            // Create the initial game board
-            function createGameBoard() {
-                gameContainer.innerHTML = '';
-                board.forEach((cell, index) => {
-                    const cellElement = document.createElement('div');
-                    cellElement.classList.add('cell');
-                    cellElement.setAttribute('data-index', index);
-                    cellElement.addEventListener('click', handleCellClick);
-                    gameContainer.appendChild(cellElement);
-                });
-            }
-            
-            // Handle cell click event
-            function handleCellClick(event) {
-                const cellIndex = event.target.getAttribute('data-index');
-                
-                if (board[cellIndex] === '') {
-                    board[cellIndex] = currentPlayer;
-                    event.target.textContent = currentPlayer;
-                    event.target.classList.add(currentPlayer);
+                <html>
+                    <head>
+                        <title>Tic-Tac-Toe Game</title>
+                        <style>
+                            .board {
+                                display: flex;
+                                flex-wrap: wrap;
+                                width: 300px;
+                                margin: 0 auto;
+                            }
+                            .cell {
+                                width: 100px;
+                                height: 100px;
+                                border: 1px solid #ccc;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 32px;
+                                cursor: pointer;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="board"></div>
                     
-                    if (checkWin()) {
-                        alert(`Player ${currentPlayer} wins!`);
-                        resetGame();
-                    } else if (board.every(cell => cell !== '')) {
-                        alert("It's a draw!");
-                        resetGame();
-                    } else {
-                        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                    }
-                }
-            }
-            
-            // Check if a player has won
-            function checkWin() {
-                const winningCombinations = [
-                    [0, 1, 2],
-                    [3, 4, 5],
-                    [6, 7, 8],
-                    [0, 3, 6],
-                    [1, 4, 7],
-                    [2, 5, 8],
-                    [0, 4, 8],
-                    [2, 4, 6]
-                ];
-                
-                return winningCombinations.some(combination => {
-                    const [a, b, c] = combination;
-                    return board[a] !== '' && board[a] === board[b] && board[a] === board[c];
-                });
-            }
-            
-            // Reset the game
-            function resetGame() {
-                board.fill('');
-                currentPlayer = 'X';
-                createGameBoard();
-            }
-            
-            // Initialize the game board
-            createGameBoard();
-        </script>
-    </body>
-</html>
-``
+                        <script>
+                            // Game logic
+                            const board = ['', '', '', '', '', '', '', '', ''];
+                            let currentPlayer = 'X';
+                    
+                            const boardContainer = document.querySelector('.board');
+                            boardContainer.addEventListener('click', handleCellClick);
+                    
+                            // Create the game board
+                            function createGameBoard() {
+                                boardContainer.innerHTML = '';
+                                for (let i = 0; i < 9; i++) {
+                                    const cell = document.createElement('div');
+                                    cell.classList.add('cell');
+                                    cell.dataset.index = i;
+                                    cell.textContent = board[i];
+                                    boardContainer.appendChild(cell);
+                                }
+                            }
+                    
+                            // Handle cell click event
+                            function handleCellClick(event) {
+                                const cellIndex = event.target.dataset.index;
+                                if (board[cellIndex] === '') {
+                                    board[cellIndex] = currentPlayer;
+                                    event.target.textContent = currentPlayer;
+                    
+                                    if (checkWin()) {
+                                        alert(`Player ${currentPlayer} wins!`);
+                                        resetGame();
+                                    } else if (board.every(cell => cell !== '')) {
+                                        alert("It's a draw!");
+                                        resetGame();
+                                    } else {
+                                        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                                    }
+                                }
+                            }
+                    
+                            // Check if a player has won
+                            function checkWin() {
+                                const winningCombinations = [
+                                    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+                                    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+                                    [0, 4, 8], [2, 4, 6] // Diagonals
+                                ];
+                    
+                                for (const combination of winningCombinations) {
+                                    const [a, b, c] = combination;
+                                    if (board[a] !== '' && board[a] === board[b] && board[a] === board[c]) {
+                                        return true;
+                                    }
+                                }
+                    
+                                return false;
+                            }
+                    
+                            // Reset the game
+                            function resetGame() {
+                                board.fill('');
+                                currentPlayer = 'X';
+                                createGameBoard();
+                            }
+                    
+                            // Initialize the game board
+                            createGameBoard();
+                        </script>
+                    </body>
+                    </html>
                 
                 
                 
