@@ -24,6 +24,86 @@
             <div class="container">
                 <h1>Using ChatGPT to help me create Tic-Tac-Toe</h1>
                
+                
+                
+                
+                
+                
+                 const gameContainer = document.getElementById('game-container');
+            const board = ['', '', '', '', '', '', '', '', ''];
+            let currentPlayer = 'X';
+            
+            // Create the initial game board
+            function createGameBoard() {
+                gameContainer.innerHTML = '';
+                board.forEach((cell, index) => {
+                    const cellElement = document.createElement('div');
+                    cellElement.classList.add('cell');
+                    cellElement.setAttribute('data-index', index);
+                    cellElement.addEventListener('click', handleCellClick);
+                    gameContainer.appendChild(cellElement);
+                });
+            }
+            
+            // Handle cell click event
+            function handleCellClick(event) {
+                const cellIndex = event.target.getAttribute('data-index');
+                
+                if (board[cellIndex] === '') {
+                    board[cellIndex] = currentPlayer;
+                    event.target.textContent = currentPlayer;
+                    event.target.classList.add(currentPlayer);
+                    
+                    if (checkWin()) {
+                        alert(`Player ${currentPlayer} wins!`);
+                        resetGame();
+                    } else if (board.every(cell => cell !== '')) {
+                        alert("It's a draw!");
+                        resetGame();
+                    } else {
+                        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                    }
+                }
+            }
+            
+            // Check if a player has won
+            function checkWin() {
+                const winningCombinations = [
+                    [0, 1, 2],
+                    [3, 4, 5],
+                    [6, 7, 8],
+                    [0, 3, 6],
+                    [1, 4, 7],
+                    [2, 5, 8],
+                    [0, 4, 8],
+                    [2, 4, 6]
+                ];
+                
+                return winningCombinations.some(combination => {
+                    const [a, b, c] = combination;
+                    return board[a] !== '' && board[a] === board[b] && board[a] === board[c];
+                });
+            }
+            
+            // Reset the game
+            function resetGame() {
+                board.fill('');
+                currentPlayer = 'X';
+                createGameBoard();
+            }
+            
+            // Initialize the game board
+            createGameBoard();
+        </script>
+    </body>
+</html>
+``
+                
+                
+                
+                
+                
+                
             </div>
         </section> 
         <footer>
