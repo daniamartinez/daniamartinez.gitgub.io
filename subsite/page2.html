@@ -1,3 +1,8 @@
+
+ 
+
+
+<!DOCTYPE html>
 <html>
 <head>
   <title>Your Business</title>
@@ -5,19 +10,49 @@
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
+      background-color: #f2f2f2;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
     }
     h1 {
       color: #333;
-      font-size: 24px;
+      font-size: 32px;
+      margin-bottom: 10px;
     }
     p {
       color: #666;
       font-size: 16px;
       line-height: 1.5;
     }
+    .highlight {
+      color: #ff6f00;
+      font-weight: bold;
+    }
+    .contact-info {
+      margin-top: 20px;
+    }
+    .contact-info ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .contact-info li {
+      margin-bottom: 10px;
+    }
+    .contact-info li span {
+      color: #333;
+      font-weight: bold;
+    }
   </style>
 </head>
-  <body>
+<body>
+   <body>
  <a = href="./../index.html">
    <h1>HOME</h1>
  </a>
@@ -25,33 +60,37 @@
   <a href="page2.html">Page 2</a>
   <h2> Hello this is page two!</h2>
 </body>
-<body>
-  <h1>About Us</h1>
-  <p>Welcome to our business page! We are dedicated to providing exceptional products/services to our customers. Here's a brief overview of what we do:</p>
   
-  <h2>Our Mission</h2>
-  <p>Describe your business mission and what sets you apart from others in the industry.</p>
+  <div class="container">
+    <h1>About Us</h1>
+    <p>Welcome to our business page! We are dedicated to providing exceptional products/services to our customers. Here's a brief overview of what we do:</p>
   
-  <h2>Our Services/Products</h2>
-  <ul>
-    <li>Service/Product 1: Brief description of the service/product.</li>
-    <li>Service/Product 2: Brief description of the service/product.</li>
-    <li>Service/Product 3: Brief description of the service/product.</li>
-  </ul>
+    <h2>Our Mission</h2>
+    <p>Describe your business mission and what sets you apart from others in the industry.</p>
   
-  <h2>Why Choose Us?</h2>
-  <p>Highlight the unique qualities or advantages of your business:</p>
-  <ul>
-    <li>Quality: Describe how your products/services are of the highest quality.</li>
-    <li>Expertise: Highlight your team's expertise and experience in the industry.</li>
-    <li>Customer Satisfaction: Mention your commitment to customer satisfaction and any testimonials or reviews you have received.</li>
-  </ul>
+    <h2>Our Services/Products</h2>
+    <ul>
+      <li>Service/Product 1: Brief description of the service/product.</li>
+      <li>Service/Product 2: Brief description of the service/product.</li>
+      <li>Service/Product 3: Brief description of the service/product.</li>
+    </ul>
   
-  <h2>Contact Information</h2>
-  <p>If you have any questions or would like to inquire about our services/products, please feel free to reach out to us:</p>
-  <ul>
-    <li>Email: yourname@example.com</li>
-    <li>Phone: (123) 456-7890</li>
-    <li>Address: 123 Main Street, City, State, ZIP</li>
-  </ul>
-
+    <h2>Why Choose Us?</h2>
+    <p>Highlight the unique qualities or advantages of your business:</p>
+    <ul>
+      <li>Quality: Describe how your products/services are of the highest quality.</li>
+      <li>Expertise: Highlight your team's expertise and experience in the industry.</li>
+      <li>Customer Satisfaction: Mention your commitment to customer satisfaction and any testimonials or reviews you have received.</li>
+    </ul>
+  
+    <h2>Contact Information</h2>
+    <div class="contact-info">
+      <ul>
+        <li><span>Email:</span> yourname@example.com</li>
+        <li><span>Phone:</span> (123) 456-7890</li>
+        <li><span>Address:</span> 123 Main Street, City, State, ZIP</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
